@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css"> 
+
+</head>
+<body>
+  <div class="model hide" id="scoremodel" >
+      <div
+        class="model_bodyScore"
+        style="
+          width: 1217px;
+          height: 667px;
+          background-size: contain;
+          position: relative;
+          right: 79px;
+          background-repeat: no-repeat;
+          background-image: url(assests/images/Isolation_Mode.png);
+        "
+      >
+        <p class="highscores">High Scores</p>
+        <div class="list_score">
+          <ul class="scorB" style="margin-top: 24px">
+            <li class="one">
+              <span class="sc1">1</span>
+              <span class="player">Player Name01</span>
+              <span class="pts">500pts</span>
+            </li>
+            <li class="one">
+              <span class="sc1">2</span>
+              <span class="player">Player Name02</span>
+              <span class="pts">500pts</span>
+            </li>
+
+            <li class="one">
+              <span class="sc1">3</span>
+              <span class="player">Player Name03</span>
+              <span class="pts">500pts</span>
+            </li>
+            <li class="one">
+              <span class="sc1">4</span>
+              <span class="player">Player Name04</span>
+              <span class="pts">500pts</span>
+            </li>
+            <li class="one">
+              <span class="sc1">5</span>
+              <span class="player">Player Name05</span>
+              <span class="pts">500pts</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="white_btn">
+          <img
+            class="whitescore"
+            src="assests/images/Button%20Yellow1.png"
+            alt=""
+          />
+          <span class="white-texts" onclick="hidemodel()">Back</span>
+          <img
+            class="redscore"
+            src="assests/images/Button%20Yellow2.png"
+            alt=""
+          />
+          <span class="red-texts">New Game</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+    <div class="heading">
+       
+        <h1> HANGMAN <br/>TONY </h1>
+        <div class="duck-container">
+             <img class="duck_image" src="assests/images/Group.png" alt="">
+             <p class="text" onclick="newGame('sc2.html')" style="cursor: pointer;" >
+                New Game
+             </p>
+             <p class="score" onclick="openScore()" style="cursor: pointer;">
+                Score
+             </p>
+        </div>
+       
+    </div>
+    </div>
+
+    <script src="core.js"></script>
+    
+</body>
+
+<!-- Mirrored from hangman.livedastak.in/sc1.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 03:17:07 GMT -->
+</html>

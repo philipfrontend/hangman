@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="model hide" id="losemodel">
+      <div class="model_body">
+        <span class="youloss"> YOU LOSS :( </span>
+        <span class="currentL"> The Correct Word is : </span>
+        <span class="inter" id="inter1"></span>
+        <div class="white_btn">
+          <img class="white" src="assests/images/Button%20Yellow1.png" alt="" />
+          <span class="white-text" onclick="openScore()">View Scores</span>
+          <img class="red" src="assests/images/Button%20Yellow2.png" alt="" />
+          <span class="red-text" onclick="newGame('sc2.html')">Try Again</span>
+        </div>
+      </div>
+    </div>
+    <div class="model hide" id="scoremodel">
+      <div
+        class="model_bodyScore"
+        style="
+          width: 1217px;
+          height: 667px;
+          background-size: contain;
+          position: relative;
+          right: 79px;
+          background-repeat: no-repeat;
+          background-image: url(assests/images/Isolation_Mode.png);
+        "
+      >
+        <p class="highscores">High Scores</p>
+        <div class="list_score">
+          <ul class="scorB" style="margin-top: 24px">
+            <li class="one">
+              <span class="sc1">1</span>
+              <span class="player">Player Name01</span>
+              <span class="pts" id="score_value"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="white_btn">
+          <img
+            class="whitescore"
+            src="assests/images/Button%20Yellow1.png"
+            alt=""
+          />
+          <span class="white-texts" onclick="hidemodel()">Back</span>
+          <img
+            class="redscore"
+            src="assests/images/Button%20Yellow2.png"
+            alt=""
+          />
+          <span class="red-texts" onclick="newGame('sc1.html')">New Game</span>
+        </div>
+      </div>
+    </div>
+    <div class="model hide" id="catModel">
+      <div class="model_body">
+        <span class="category"> Select Category </span>
+        <img src="assests/images/diamond1.png" alt="" class="diamond" />
+        <ul class="di">
+          <li class="di_li">Countries</li>
+          <li class="di_li">Animal</li>
+          <li class="di_li">Fruits</li>
+
+          <li class="di_li">Sports</li>
+         
+        </ul>
+
+        <div class="white_btn" onclick="hidemodel()">
+          <img
+            class="whitescorecat"
+            src="assests/images/Button%20Yellow1.png"
+            alt=""
+          />
+          <span class="white-textw">Back</span>
+          <img
+            class="redscorecat"
+            src="assests/images/Button%20Yellow2.png"
+            alt=""
+          />
+          <span class="red-textR" onclick="newGame('sc2.html')">New Game</span>
+        </div>
+      </div>
+    </div>
+    <div class="model hide" id="winmodel">
+      <div class="model_body">
+        <span class="youwin"> YOU WIN </span>
+        <span class="current"> You've guessed the correct word: </span>
+        <span class="inter" id="inter2"></span>
+        <div class="white_btn">
+          <img class="white" src="assests/images/Button%20Yellow1.png" alt="" />
+          <span class="white-text" onclick="openScore()">View Scores</span>
+          <img class="red" src="assests/images/Button%20Yellow2.png" alt="" />
+          <span class="red-text" onclick="continueGame()">Continue</span>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <ul class="top_menu">
+        <!-- <li class="level" onclick="openWinModel()">Win Model</li>
+        <li class="level" onclick="openLoseModel()">Lose Model</li> -->
+        <li class="level">Level :<span id="level"></span><span>/10</span></li>
+        <li class="score">
+          <img src="assests/images/Coin.png" alt="" class="small_coin" />
+          <span class="scor">Score : <span id="score">0</span></span>
+        </li>
+        <li class="diamond">
+          <img src="assests/images/Diamond%20lime.png" alt="" />
+          <img src="assests/images/Diamond%20lime.png" alt="" />
+          <img src="assests/images/Diamond%20lime.png" alt="" />
+          <img src="assests/images/Diamond%20lime.png" alt="" />
+
+          <img src="assests/images/Diamond%20turquoise.png" alt="" />
+        </li>
+        <li
+          class="quit_button"
+          onclick="newGame('sc1.html')"
+          style="cursor: pointer"
+        >
+          <img src="assests/images/Button%20Yellow.png" alt="" />
+          <span class="btn">Quit</span>
+        </li>
+      </ul>
+
+      <img src="assests/images/oldman.png" id="hangman" alt="" class="rope" />
+
+      <ul class="mar">
+        <li class="i">
+          <input
+            oninput="moveToNextField(this, '1')"
+            maxlength="1"
+            type="text"
+            id="0"
+            name="first"
+            class="in"
+            style="
+              position: absolute;
+              top: 0;
+              color: black;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 1px;
+            "
+          />
+        </li>
+        <li class="x">
+          <input
+            oninput="moveToNextField(this, '2')"
+            maxlength="1"
+            type="text"
+            class="in"
+            id="1"
+            name="second"
+            style="
+              top: 0;
+              color: black;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 1px;
+            "
+          />
+        </li>
+        <li class="t">
+          <input
+            oninput="moveToNextField(this, '3')"
+            maxlength="1"
+            type="text"
+            class="in"
+            id="2"
+            name="third"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 160px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="b">
+          <input
+            oninput="moveToNextField(this, '4')"
+            maxlength="1"
+            type="text"
+            id="3"
+            name="fourth"
+            class="in"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 232px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="b">
+          <input
+            oninput="moveToNextField(this, '5')"
+            type="text"
+            maxlength="1"
+            class="in"
+            id="4"
+            name="five"
+            style="
+              top: 0;
+              color: rgb(7, 7, 7);
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 304px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="m">
+          <input
+            oninput="moveToNextField(this, '6')"
+            type="text"
+            id="5"
+            name="six"
+            maxlength="1"
+            class="in"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 377px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="b">
+          <input
+            oninput="moveToNextField(this, '7')"
+            maxlength="1"
+            id="6"
+            name="seven"
+            type="text"
+            class="in"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 448px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="x">
+          <input
+            oninput="moveToNextField(this, '8')"
+            maxlength="1"
+            type="text"
+            id="7"
+            name="eight"
+            class="in"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 528px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="z">
+          <input
+            oninput="moveToNextField(this, '9')"
+            maxlength="1"
+            type="text"
+            class="in"
+            id="8"
+            name="nine"
+            style="
+              top: 0;
+              color: rgb(0, 0, 0);
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 600px;
+              bottom: 57px;
+            "
+          />
+        </li>
+        <li class="o">
+          <input
+            oninput="moveToNextField(this, 'secondCharInput')"
+            type="text"
+            id="9"
+            name="ten"
+            maxlength="1"
+            class="in"
+            style="
+              top: 0;
+              color: black;
+              position: absolute;
+              font-size: 40px;
+              font-family: regular;
+              font-weight: 400;
+              width: 64px;
+              padding-top: 7px;
+              height: 64px;
+              text-align: center;
+              line-height: 39.3px;
+              word-wrap: break-word;
+              background-color: #fff;
+              border-radius: 4px;
+              border: 4px black solid;
+              margin-right: 8px;
+              left: 672px;
+              bottom: 57px;
+            "
+          />
+        </li>
+      </ul>
+      <span class="chances">Chances Left: <span id="counts">0</span>/5</span>
+      <img src="assests/images/Sign%201.png" alt="" class="cat" />
+      <span class="cate" onclick="openCat()">Category</span>
+      <img src="assests/images/Sign%20Post.png" alt="" class="hint" />
+    </div>
+    <span class="hint">Hints ?</span>
+    <!-- <script
+   <script>
+      function openScore() {
+        var winmodel = document.getElementById("winmodel");
+        winmodel.classList.toggle("hide");
+        var scoremodel = document.getElementById("scoremodel");
+        scoremodel.classList.toggle("hide");
+      }
+      function hidemodel() {
+        var scoremodel = document.getElementById("scoremodel");
+        scoremodel.classList.add("hide");
+        var catModel = document.getElementById("catModel");
+        catModel.classList.add("hide");
+        // winmodel.classList.toggle("hide");
+      }
+      function openCat() {
+        var winmodel = document.getElementById("catModel");
+        winmodel.classList.toggle("hide");
+      }
+    </script> -->
+
+    <script src="core.js"></script>
+    <!-- <script src="script.js"></script> -->
+  </body>
+
+  <!-- Mirrored from hangman.livedastak.in/sc2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Dec 2023 03:17:11 GMT -->
+</html>
